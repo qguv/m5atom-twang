@@ -26,8 +26,8 @@
 #ifndef CONFIG_H
 	#define CONFIG_H
 
-#define DATA_PIN        16
-#define CLOCK_PIN       17
+#define DATA_PIN        26
+#define CLOCK_PIN       32
 
 /* Game is rendered to this and scaled down to your strip.
  This allows level definitions to work on all strip lengths  */

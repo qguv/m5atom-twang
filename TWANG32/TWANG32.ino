@@ -33,18 +33,19 @@
 
 #include <FastLED.h>
 #include<Wire.h>
+#include <M5Atom.h>
 #include "Arduino.h"
 #include "RunningMedian.h"
 
 // twang files
 #include "config.h"
 #include "twang_mpu.h"
-#include "enemy.h"
-#include "particle.h"
-#include "spawner.h"
-#include "lava.h"
-#include "boss.h"
-#include "conveyor.h"
+#include "Enemy.h"
+#include "Particle.h"
+#include "Spawner.h"
+#include "Lava.h"
+#include "Boss.h"
+#include "Conveyor.h"
 #include "iSin.h"
 #include "sound.h"
 #include "settings.h"
@@ -91,7 +92,7 @@ bool attacking = 0;                // Is the attack in progress?
 #define WIN_CLEAR_DURATION 1000
 #define WIN_OFF_DURATION 1200
 
-Twang_MPU accelgyro = Twang_MPU();
+//Twang_MPU accelgyro = Twang_MPU();
 CRGB leds[VIRTUAL_LED_COUNT];
 RunningMedian MPUAngleSamples = RunningMedian(5);
 RunningMedian MPUWobbleSamples = RunningMedian(5);
@@ -204,7 +205,8 @@ void setup() {
 	settings_init();	// load the user settings from EEPROM
 	
 	Wire.begin();
-	accelgyro.initialize();
+	M5.begin(true, false, true);
+	//accelgyro.initialize();
 	
 #ifdef USE_NEOPIXEL
   Serial.print("\r\nCompiled for WS2812B (Neopixel) LEDs");
@@ -1162,7 +1164,32 @@ void getInput(){
 	int16_t ax, ay, az;
 	int16_t gx, gy, gz;
 
-    accelgyro.getMotion6(&ax, &ay, &az, &gx, &gy, &gz);
+	static bool pressed = false;
+	static bool presses = 0;
+	if (M5.Btn.isPressed()) {
+		if (!pressed) {
+			pressed = true;
+			presses++;
+			switch (presses % 3) {
+			case 0:
+				joystickTilt = 90;
+				break;
+			case 1:
+				joystickTilt = -90;
+				break;
+			case 2:
+				joystickWobble = DEFAULT_ATTACK_THRESHOLD;
+				break;
+			}
+		}
+	} else {
+		pressed = false;
+		joystickTilt = 0;
+		joystickWobble = 0;
+	}
+	return;
+
+    //accelgyro.getMotion6(&ax, &ay, &az, &gx, &gy, &gz);
 		
 		
 		

@@ -12,12 +12,12 @@
 #define EEPROM_SIZE				   256
 
 // LEDS
-#define NUM_LEDS        144
+#define NUM_LEDS        300
 #define MIN_LEDS				60
 
 
 
-#define DEFAULT_BRIGHTNESS	150 
+#define DEFAULT_BRIGHTNESS	32 
 #define MIN_BRIGHTNESS			10
 #define MAX_BRIGHTNESS 			255
 
@@ -44,7 +44,7 @@ const uint8_t LIVES_PER_LEVEL = 3;      // default lives per level
 #define MIN_VOLUME							0
 #define MAX_VOLUME							255
 
-#define DAC_AUDIO_PIN 		25     // should be 25 or 26 only
+#define DAC_AUDIO_PIN 		26     // should be 25 or 26 only
 
 enum ErrorNums{
 	ERR_SETTING_NUM,

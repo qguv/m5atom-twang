@@ -35,6 +35,7 @@ int dac_pin;
 
 void IRAM_ATTR onSoundTimer() 
 {    
+	return;
   if (sound_on) {    
 			dacWrite(dac_pin, (sound_wave_high?sound_volume:0));
       sound_wave_high = ! sound_wave_high;
@@ -45,6 +46,7 @@ void IRAM_ATTR onSoundTimer()
 }
 
 void sound_init(int pin){  // pin must be a DAC pin number !! (typically 25 or 26)
+	return;
   dac_pin = pin;
 	sound_on = false;
 	pinMode(dac_pin, OUTPUT);
@@ -69,6 +71,7 @@ void sound_resume() // resume from pause ... after eeprom write
 }
 
 bool sound(uint16_t freq, uint8_t volume){
+	return false;
 	if (volume == 0) {
 		soundOff();
 		return false;
@@ -83,6 +86,7 @@ bool sound(uint16_t freq, uint8_t volume){
 }
 
 void soundOff(){  
+	return;
  sound_on = false;
  sound_volume = 0;
  timerAlarmWrite(sndTimer, ESP32_F_CPU/AUDIO_INTERRUPT_PRESCALER/(MIN_FREQ), true);  // lower timer freq
