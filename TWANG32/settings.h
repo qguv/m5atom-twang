@@ -24,7 +24,7 @@
 // PLAYER
 const uint8_t MAX_PLAYER_SPEED = 10;     // Max move speed of the player
 const uint8_t LIVES_PER_LEVEL = 3;      // default lives per level
-#define MIN_LIVES_PER_LEVEL 3
+#define MIN_LIVES_PER_LEVEL 1
 #define MAX_LIVES_PER_LEVEL 9
 
 // JOYSTICK
