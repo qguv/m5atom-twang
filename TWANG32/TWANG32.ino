@@ -59,6 +59,7 @@
 #define DIRECTION            1
 #define USE_GRAVITY          0     // 0/1 use gravity (LED strip going up wall)
 #define BEND_POINT           550   // 0/1000 point at which the LED strip goes up the wall
+#define JOYSTICK_DIVISOR     166
 
 // GAME
 long previousMillis = 0;           // Time of the last redraw
@@ -1165,7 +1166,7 @@ void getInput(){
 		
 		
 		
-    int a = (JOYSTICK_ORIENTATION == 0?ax:(JOYSTICK_ORIENTATION == 1?ay:az))/166;
+    int a = (JOYSTICK_ORIENTATION == 0?ax:(JOYSTICK_ORIENTATION == 1?ay:az))/JOYSTICK_DIVISOR;
     int g = (JOYSTICK_ORIENTATION == 0?gx:(JOYSTICK_ORIENTATION == 1?gy:gz));
 		
 		#ifdef JOYSTICK_DEBUG
