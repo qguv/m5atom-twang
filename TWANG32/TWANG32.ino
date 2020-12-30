@@ -97,7 +97,7 @@ RunningMedian MPUAngleSamples = RunningMedian(5);
 RunningMedian MPUWobbleSamples = RunningMedian(5);
 iSin isin = iSin();
 
-#define JOYSTICK_DEBUG  // comment out to stop serial debugging
+//#define JOYSTICK_DEBUG  // comment out to stop serial debugging
 
 // POOLS
 #define LIFE_LEDS 3
