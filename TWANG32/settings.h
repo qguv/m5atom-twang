@@ -28,10 +28,10 @@ const uint8_t LIVES_PER_LEVEL = 3;      // default lives per level
 #define MAX_LIVES_PER_LEVEL 9
 
 // JOYSTICK
-#define JOYSTICK_ORIENTATION 1     // 0, 1 or 2 to set the axis of the joystick
+#define JOYSTICK_ORIENTATION 0     // 0, 1 or 2 to set the axis of the joystick
 #define JOYSTICK_DIRECTION   1     // 0/1 to flip joystick direction
-#define DEFAULT_ATTACK_THRESHOLD     30000 // The threshold that triggers an attack
-#define MIN_ATTACK_THRESHOLD     20000
+#define DEFAULT_ATTACK_THRESHOLD     4000 // The threshold that triggers an attack
+#define MIN_ATTACK_THRESHOLD     1
 #define MAX_ATTACK_THRESHOLD     30000
 
 

@@ -92,13 +92,12 @@ bool attacking = 0;                // Is the attack in progress?
 #define WIN_CLEAR_DURATION 1000
 #define WIN_OFF_DURATION 1200
 
-//Twang_MPU accelgyro = Twang_MPU();
 CRGB leds[VIRTUAL_LED_COUNT];
 RunningMedian MPUAngleSamples = RunningMedian(5);
 RunningMedian MPUWobbleSamples = RunningMedian(5);
 iSin isin = iSin();
 
-//#define JOYSTICK_DEBUG  // comment out to stop serial debugging
+#define JOYSTICK_DEBUG  // comment out to stop serial debugging
 
 // POOLS
 #define LIFE_LEDS 3
@@ -206,7 +205,7 @@ void setup() {
 	
 	Wire.begin();
 	M5.begin(true, false, false);
-	//accelgyro.initialize();
+	M5.IMU.Init();
 	
 #ifdef USE_NEOPIXEL
   Serial.print("\r\nCompiled for WS2812B (Neopixel) LEDs");
@@ -1164,32 +1163,8 @@ void getInput(){
 	int16_t ax, ay, az;
 	int16_t gx, gy, gz;
 
-	static bool pressed = false;
-	static bool presses = 0;
-	if (M5.Btn.isPressed()) {
-		if (!pressed) {
-			pressed = true;
-			presses++;
-			switch (presses % 3) {
-			case 0:
-				joystickTilt = 90;
-				break;
-			case 1:
-				joystickTilt = -90;
-				break;
-			case 2:
-				joystickWobble = DEFAULT_ATTACK_THRESHOLD;
-				break;
-			}
-		}
-	} else {
-		pressed = false;
-		joystickTilt = 0;
-		joystickWobble = 0;
-	}
-	return;
-
-    //accelgyro.getMotion6(&ax, &ay, &az, &gx, &gy, &gz);
+	M5.IMU.getAccelAdc(&ax, &ay, &az);
+	M5.IMU.getGyroAdc(&gx, &gy, &gz);
 		
 		
 		
