@@ -1,7 +1,13 @@
 # TWANG32
-An ESP32 based, 1D, LED strip, dungeon crawler. inspired by Line Wobbler by Robin B
+An m5atom based, 1D, LED strip, dungeon crawler. inspired by Line Wobbler by Robin B
 
-This was ported from the [TWANG fork](https://github.com/bdring/TWANG) by bdring of [Buildlog.net Blog](http://www.buildlog.net/blog?s=twang)
+## Lineage
+
+- [Robin Baumgartner created "line wobbler", the original 2d LED strip game](http://aipanic.com/projects/wobbler)
+- [Critters created TWANG, an open-source clone for Arduino Mega and Nano](https://github.com/Critters/TWANG)
+- [bdring forked TWANG to add some improvements](https://github.com/bdring/TWANG)
+- [bdring ported TWANG to the ESP-32 microcontroller, creating TWANG32](https://github.com/bdring/TWANG32)
+- [qguv ported TWANG32 to the m5stack Atom device](https://github.com/qguv/m5atom-twang)
 
 [![Youtube Video](http://www.buildlog.net/blog/wp-content/uploads/2018/05/vid_thumb.png)](https://www.youtube.com/watch?v=RXpfa-ZvUMA)
 
@@ -119,8 +125,4 @@ They all call different functions and variables to setup the level. Each one is 
 * speed: The direction and speed of the travel. Negative moves to base and positive moves towards exit. Must be less than +/- max player speed.
 
 **spawnBoss();** (only one, don't edit boss level)
-<<<<<<< HEAD
 * There are no parameters for a boss, they always spawn in the same place and have 3 lives. Tweak the values of Boss.h to modify
-=======
-* There are no parameters for a boss, they always spawn in the same place and have 3 lives. Tweak the values of Boss.h to modify
->>>>>>> origin/master
