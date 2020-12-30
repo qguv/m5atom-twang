@@ -64,34 +64,30 @@ void sendStatsPage(WiFiClient client) {
 	client.print("<table>");
 
 
-	client.print("<tr><td>");
-	client.print("LED Count (60-");
-	client.print(MAX_LEDS);
-	client.print(")</td><td><form><input type='number' name='C' value='");
-	client.print(user_settings.led_count);
-	client.print ("' min='60' max='");
-	client.print (MAX_LEDS);
-	client.print ("'><input type='submit'></form></td></tr>");
+	client.print("<tr>");
+	client.printf("<td>LED Count (%d-%d)</td>", MIN_LEDS, MAX_LEDS);
+	client.printf("<td><form><input type='number' name='C' value='%d' min='%d' max='%d'>", user_settings.led_count, MIN_LEDS, MAX_LEDS);
+	client.print("<input type='submit'></form></td></tr>");
 
-	client.print("<tr><td>Brightness (10-255)</td><td><form><input type='number' name='B' value='");
-	client.print(user_settings.led_brightness);
-	client.print ("' min='10' max='255'><input type='submit'></form></td></tr>");
+	client.printf("<tr><td>Brightness (%d-%d)</td>", MIN_BRIGHTNESS, MAX_BRIGHTNESS);
+	client.printf("<td><form><input type='number' name='B' value='%d' min='%d' max='%d'>", user_settings.led_brightness, MIN_BRIGHTNESS, MAX_BRIGHTNESS);
+	client.print("<input type='submit'></form></td></tr>");
 
-	client.print("<tr><td>Sound Volume (0-255)</td><td><form><input type='number' name='S' value='");
-	client.print(user_settings.audio_volume);
-	client.print("' min='0' max='255'><input type='submit'></form></td></tr>");
+	client.printf("<tr><td>Sound Volume (%d-%d)</td>", MIN_VOLUME, MAX_VOLUME);
+	client.printf("<td><form><input type='number' name='S' value='%d' min='%d' max='%d'>", user_settings.audio_volume, MIN_VOLUME, MAX_VOLUME);
+	client.print("<input type='submit'></form></td></tr>");
 
-	client.print("<tr><td>Joystick Deadzone (3-12)</td><td><form><input type='number' name='D' value='");
-	client.print(user_settings.joystick_deadzone);
-	client.print("' min='3' max='12'><input type='submit'></form></td></tr>");
+	client.printf("<tr><td>Joystick Deadzone (%d-%d)</td>", MIN_JOYSTICK_DEADZONE, MAX_JOYSTICK_DEADZONE);
+	client.printf("<td><form><input type='number' name='D' value='%d' min='%d' max='%d'>", user_settings.joystick_deadzone, MIN_JOYSTICK_DEADZONE, MAX_JOYSTICK_DEADZONE);
+	client.print("<input type='submit'></form></td></tr>");
 
-	client.print("<tr><td>Attack Sensitivity (20000-35000)</td><td><form><input type='number' name='A' value='");
-	client.print(user_settings.attack_threshold);
-	client.print("' min='2000' max='35000'><input type='submit'></form></td></tr>");
+	client.printf("<tr><td>Attack Sensitivity (%d-%d)</td>", MIN_ATTACK_THRESHOLD, MAX_ATTACK_THRESHOLD);
+	client.printf("<td><form><input type='number' name='A' value='%d' min='%d' max='%d'>", user_settings.attack_threshold, MIN_ATTACK_THRESHOLD, MAX_ATTACK_THRESHOLD);
+	client.print("<input type='submit'></form></td></tr>");
 
-	client.print("<tr><td>Lives Per Level (3-9)</td><td><form><input type='number' name='L' value='");
-	client.print(user_settings.lives_per_level);
-	client.print("' min='3' max='9'><input type='submit'></form></td></tr>");
+	client.printf("<tr><td>Lives Per Level (%d-%d)</td>", MIN_LIVES_PER_LEVEL, MAX_LIVES_PER_LEVEL);
+	client.printf("<td><form><input type='number' name='L' value='%d' min='%d' max='%d'>", user_settings.lives_per_level, MIN_LIVES_PER_LEVEL, MAX_LIVES_PER_LEVEL);
+	client.print("<input type='submit'></form></td></tr>");
 
 	client.print("</table>");
 
