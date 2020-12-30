@@ -294,29 +294,27 @@ void show_settings_menu() {
 	Serial.print("\r\nC=");	
 	Serial.print(user_settings.led_count);
 	
-	Serial.print(" (LED Count 60-");
-	Serial.print(MAX_LEDS);
-	Serial.println(")");
+	Serial.printf(" (LED Count %d-%d)\r\n", MIN_LEDS, MAX_LEDS);
 	
 	Serial.print("B=");	
 	Serial.print(user_settings.led_brightness);
-	Serial.println(" (LED Brightness 5-255)");
+	Serial.printf(" (LED Brightness %d-%d)\r\n", MIN_BRIGHTNESS, MAX_BRIGHTNESS);
 	
 	Serial.print("S=");
 	Serial.print(user_settings.audio_volume);
-	Serial.println(" (Sound Volume 0-255)");
+	Serial.printf(" (Sound Volume %d-%d)\r\n", MIN_VOLUME, MAX_VOLUME);
 	
 	Serial.print("D=");
 	Serial.print(user_settings.joystick_deadzone);
-	Serial.println(" (Joystick Deadzone 3-12)");
+	Serial.printf(" (Joystick Deadzone %d-%d)\r\n", MIN_JOYSTICK_DEADZONE, MAX_JOYSTICK_DEADZONE);
 	
 	Serial.print("A=");
 	Serial.print(user_settings.attack_threshold);
-	Serial.println(" (Attack Sensitivity 20000-35000)");	
+	Serial.printf(" (Attack Sensitivity %d-%d)\r\n", MIN_ATTACK_THRESHOLD, MAX_ATTACK_THRESHOLD);
 	
 	Serial.print("L=");
 	Serial.print(user_settings.lives_per_level);
-	Serial.println(" (Lives per Level (3-9))");		
+	Serial.printf(" (Lives per Level (%d-%d))\r\n", MIN_LIVES_PER_LEVEL, MAX_LIVES_PER_LEVEL);
 	
 	Serial.println("\r\n(Send...)");
 	Serial.println("  ? to show current settings");
