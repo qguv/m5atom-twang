@@ -60,7 +60,7 @@
 #define DIRECTION            1
 #define USE_GRAVITY          0     // 0/1 use gravity (LED strip going up wall)
 #define BEND_POINT           550   // 0/1000 point at which the LED strip goes up the wall
-#define JOYSTICK_DIVISOR     166
+#define JOYSTICK_DIVISOR     46
 
 // GAME
 long previousMillis = 0;           // Time of the last redraw
