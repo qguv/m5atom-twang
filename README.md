@@ -1,7 +1,24 @@
-# TWANG32
-An m5atom based, 1D, LED strip, dungeon crawler. inspired by Line Wobbler by Robin B
+# m5atom-twang
+
+An one-dimensional, LED strip, dungeon crawler, inspired by Line Wobbler by Robin Baumgartner. Ported to run on an esp32-based m5stack atom device.
+
+## Building
+
+1. install the platformio CLI toolchain
+2. connect an m5atom to your computer using a USB-C cable
+3. run `make upload`
+4. attach an APA-102 strip to the grove connector, connecting GND to GND, 5V to nothing, and the two GPIO pins to data and clock
+5. power the strip (via a brick supply to the 5V and GND lines of the strip) separately from the m5atom (via the USB-C cable)
+
+## Playing
+
+- hold the m5atom upright with the USB-C and grove connectors pointing down
+- to move, tilt the m5atom
+- to attack, give the m5atom a gentle shake
 
 ## Lineage
+
+This project is an m5atom port of an esp32 port of a fork of an Arduino Mega/Nano clone of a cool artgame:
 
 - [Robin Baumgartner created "line wobbler", the original 2d LED strip game](http://aipanic.com/projects/wobbler)
 - [Critters created TWANG, an open-source clone for Arduino Mega and Nano](https://github.com/Critters/TWANG)
@@ -9,11 +26,12 @@ An m5atom based, 1D, LED strip, dungeon crawler. inspired by Line Wobbler by Rob
 - [bdring ported TWANG to the ESP-32 microcontroller, creating TWANG32](https://github.com/bdring/TWANG32)
 - [qguv ported TWANG32 to the m5stack Atom device](https://github.com/qguv/m5atom-twang)
 
-[![Youtube Video](http://www.buildlog.net/blog/wp-content/uploads/2018/05/vid_thumb.png)](https://www.youtube.com/watch?v=RXpfa-ZvUMA)
+[![Youtube Video of TWANG32](http://www.buildlog.net/blog/wp-content/uploads/2018/05/vid_thumb.png)](https://www.youtube.com/watch?v=RXpfa-ZvUMA)
 
 ![TWANG LED Game](http://www.buildlog.net/blog/wp-content/uploads/2018/01/20180111_130909-1.jpg?s=200)
 
 ## Why ESP32?
+
 - Lower Cost than Arduino Mega
 - Faster Processor
 - More Memory
@@ -51,27 +69,30 @@ An m5atom based, 1D, LED strip, dungeon crawler. inspired by Line Wobbler by Rob
   - Possibly mix multiple sounds so things like lava and movement sound good at the same time.
 - Better looking mobile web interface (looks more like a web app)
 
-**BTW:** Since you have red this far... If you want to contribute, contact me and I might be able to get you some free or discounted hardware.
-
 ## Required libraries:
+
 * [FastLED](http://fastled.io/)
 * [RunningMedian](http://playground.arduino.cc/Main/RunningMedian)
+* M5Atom
 
 ## Hardware used:
-* ESP32, I typically use the NodeMCU-32S module
+
+* M5Stack Atom Matrix
+  * built-in MPU6886 accelerometer
 * LED light strip. The more the better, maximum of 1000. Tested with 1x & 2x 144/meter, 12x 60/meter and 5m x 114/meter strips. This has been tested with APA102C and NeoPixel type strips. Anything compatible with the FastLED library should work.
-* MPU6050 accelerometer
 * Spring doorstop, I used [these](http://smile.amazon.com/gp/product/B00J4Y5BU2)
 * Speaker and amplifier. I use a PAM8403 module. (ESP32 cannot drive a speaker as loudly as an Arduino)
+  * you can use the M5Stack Echo unit, but you'll need a separate accelerometer and the original MPU6050 code from [TWANG32]()
 
 See [Buildlog.net Blog](http://www.buildlog.net/blog?s=twang) for more details.
-
-Super easy to use kits and ready to play units [are available on Tindie](https://www.tindie.com/products/33366583/twang32-led-strip-game/).
 
 ![TWANG 32 Controller](http://www.buildlog.net/blog/wp-content/uploads/2018/03/20180319_080636.jpg)
 
 ## Enclosure
-[The STL files are here](http://www.buildlog.net/blog/wp-content/uploads/2018/04/twang32_stl.zip).
+
+The m5atom port uses the internal accelerometer module in the m5atom unit. This means you'll either have to mount the whole thing atop a spring, or simply hold the device upright with the USB-C and grove connectors pointing down. This is surprisingly playable in this format, though missing the characteristic 'twang' spring.
+
+You can try to modify the enclosure from the twang32 project, see [Buildlog.net Blog](http://www.buildlog.net/blog?s=twang).
 
 ![TWANG32](http://www.buildlog.net/blog/wp-content/uploads/2018/03/twang32_enclosure.jpg)
 
